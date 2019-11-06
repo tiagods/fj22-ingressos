@@ -24,9 +24,7 @@ public class Filme {
     /**
      * @deprecated hibernate only
      */
-    public Filme() {
-
-    }
+    public Filme() {}
     
     public Filme(String nome, Duration duracao, String genero) {
 		this.nome = nome;
