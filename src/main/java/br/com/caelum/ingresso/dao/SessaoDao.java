@@ -16,6 +16,7 @@ public class SessaoDao {
 	private EntityManager manager;
 	
 	public void save(Sessao sessao) {
+		sessao.setId(null);
 		manager.persist(sessao);
 	}
 	
