@@ -55,9 +55,8 @@ public class Filme {
 	public Duration getDuracao() {
 		return duracao;
 	}
-
-	public void setDuracao(Duration duracao) {
-		this.duracao = duracao;
+	public void setDuracao(long duracao) {
+		this.duracao=Duration.ofMinutes(duracao);
 	}
 
 	public String getGenero() {

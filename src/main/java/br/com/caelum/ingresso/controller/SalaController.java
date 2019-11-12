@@ -50,7 +50,7 @@ public class SalaController {
     public ModelAndView salva(@Valid SalaForm salaForm, BindingResult result) {
         Sala sala = salaForm.toSala();
         if (result.hasErrors()){
-            return form(Optional.empty(), salaForm);
+            //return form(Optional.empty(), salaForm);
         }
         System.out.println(sala.getLugares().size());
         salaDao.save(sala);
