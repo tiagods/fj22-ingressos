@@ -12,15 +12,13 @@ import br.com.caelum.ingresso.model.Filme;
 import br.com.caelum.ingresso.model.Ingresso;
 import br.com.caelum.ingresso.model.Sala;
 import br.com.caelum.ingresso.model.Sessao;
-import br.com.caelum.ingresso.model.descontos.DescontoParaBancos;
-import br.com.caelum.ingresso.model.descontos.DescontoParaEstudantes;
-import br.com.caelum.ingresso.model.descontos.SemDesconto;
+import br.com.caelum.ingresso.model.TipoDeIngresso;
 
 public class DescontoTest {
 	
-	static Sala sala;
-	static Filme filme;
-	static Sessao sessao;
+	private static Sala sala;
+	private static Filme filme;
+	private static Sessao sessao;
 	
 	@BeforeClass
 	public static void preparar() {
@@ -32,25 +30,30 @@ public class DescontoTest {
 	
 	@Test
 	public void ingressoSemDesconto() {
-		Ingresso ingresso = new Ingresso(sessao, new SemDesconto());
+		TipoDeIngresso tipo = TipoDeIngresso.INTEIRO;
+		Ingresso ingresso = new Ingresso(sessao, tipo,null);
 		
 		BigDecimal precoEsperado = new BigDecimal("32.50");
+		Assert.assertNotNull(tipo.getDescricao());
 		Assert.assertEquals(precoEsperado, ingresso.getPreco());
 	}
 	
 	@Test
 	public void descontoClienteBanco() {
-		Ingresso ingresso = new Ingresso(sessao, new DescontoParaBancos());
-		
+		TipoDeIngresso tipo = TipoDeIngresso.BANCO;
+		Ingresso ingresso = new Ingresso(sessao, tipo,null);
 		BigDecimal precoEsperado = new BigDecimal("22.75");
+		Assert.assertNotNull(tipo.getDescricao());
 		Assert.assertEquals(precoEsperado, ingresso.getPreco());
 	}
 	
 	@Test
 	public void descontoClienteEstudante() {
-		Ingresso ingresso = new Ingresso(sessao, new DescontoParaEstudantes());
+		TipoDeIngresso tipo = TipoDeIngresso.ESTUDANTE;
+		Ingresso ingresso = new Ingresso(sessao, tipo,null);
 		
 		BigDecimal precoEsperado = new BigDecimal("16.25");
+		Assert.assertNotNull(tipo.getDescricao());
 		Assert.assertEquals(precoEsperado, ingresso.getPreco());
 	}
 	
