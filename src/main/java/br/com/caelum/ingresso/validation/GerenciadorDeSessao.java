@@ -21,7 +21,9 @@ public class GerenciadorDeSessao {
 		if (terminaAmanha(sessaoNova)) {
 			return false;
 		}
-		return this.sessaoDaSala.stream().noneMatch(sessaoExistente -> horarioIsConflitante(sessaoExistente, sessaoNova));
+		return this.sessaoDaSala
+				.stream()
+				.noneMatch(sessaoExistente -> horarioIsConflitante(sessaoExistente, sessaoNova));
 	}
 	private boolean terminaAmanha(Sessao sessao) {
 		LocalDateTime terminoSessaoNova = getTerminoSessaoComDiaDeHoje(sessao);

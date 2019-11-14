@@ -13,9 +13,9 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Ingresso {
-@Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)	
-private Integer id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)	
+	private Integer id;
 	@ManyToOne
 	private Sessao sessao;
 	private BigDecimal preco;
@@ -70,4 +70,5 @@ private Integer id;
 	public Lugar getLugar() {
 		return lugar;
 	}
+	
 }
